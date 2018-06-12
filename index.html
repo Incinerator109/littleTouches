@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="resume.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<title>
+	Joshua jQuery Resume
+	</title>
+</head>
+
+	
+	<body>
+	
+	<p id="contact">
+	<span class="highlight" id="pName"></span><span id="phone"></span>
+	<br>
+	<span class="highlight" id="eName"></span><span id="email"></span>
+	</p>
+	
+	<h1>
+	Joshua
+	</h1>
+	<p id="stepdown"></p>
+	
+	
+	<h2 id="tSkills" title="Click to collapse">
+	Skills
+	</h2>
+	
+	<ul id="skills">
+		<li><span class="undo" id="skillOne"></span></li>
+		<li><span class="undo" id="skillTwo"></span></li>
+		<li><span class="undo" id="skillThree"></span></li>
+		<li><span class="undo" id="skillFour"></span></li>
+		<li><span class="undo" id="skillFive"></span></li>
+		<li><span class="undo" id="skillSix"></span></li>
+	</ul>
+	
+	<hr>
+	
+	<h2 id="tExperience">
+	Experience
+	</h2>
+	
+	<span id="experience">
+	<h3>
+	<span id="whatOne"></span><span id="whereOne"></span>
+	</h3>
+		<span class="time" id="whenOne"></span>
+		<br>
+		<span id="jobOne"></span>
+		
+	</span>
+	<hr>
+	
+	
+	<h2 id="tEducation">
+	Education
+	</h2>
+	
+	<span id="education">
+	<h3>
+	<span id="degreeOne"></span> <span id="schoolOne"></span>
+	</h3>
+		<span class="time" id="gradOne"></span>
+		<br>
+		<span id="descOne"></span>
+	<br>
+	
+	<h3>
+	<span id="degreeTwo"></span> <span id="schoolTwo"></span>
+	</h3>
+		<span class="time" id="gradTwo"></span>
+		<br>
+		<span id="descTwo"></span>
+	</span>
+	<hr>
+	
+	
+	<h2 id="tActivities">
+	Activities
+	</h2>
+		<p id="act"></p>
+	</body>
+	
+<script>
+var resume = {};
+
+$.getJSON('./resume.json', function(data){resume = data; $( document ).ready(Ready());});
+
+function displayFromJson(){
+	//Contact information
+	$('#pName').text('Phone: ');
+	$('#phone').text(resume.top.phone);
+	$('#eName').text('Email: ');
+	$('#email').text( resume.top.email);
+	
+	//Goal
+	$('#stepdown').text( resume.top.goal);
+	
+	//Skills
+	$('#skillOne').text( resume.skills[0]);
+	$('#skillTwo').text( resume.skills[1]);
+	$('#skillThree').text( resume.skills[2]);
+	$('#skillFour').text( resume.skills[3]);
+	$('#skillFive').text( resume.skills[4]);
+	$('#skillSix').text( resume.skills[5]);
+	
+	//Experience
+		//Walmart
+	$('#whatOne').text( resume.experience.deliAssociate.what +" / ");
+	$('#whereOne').text( resume.experience.deliAssociate.where);
+	$('#whenOne').text( resume.experience.deliAssociate.when);
+	$('#jobOne').text( resume.experience.deliAssociate.description);
+	
+	$('#degreeOne').text( resume.education.indianaAcademy.degree +" / ");
+	$('#gradOne').text( resume.education.indianaAcademy.when);
+	$('#schoolOne').text( resume.education.indianaAcademy.where);
+	$('#descOne').text( resume.education.indianaAcademy.description);
+	
+	$('#degreeTwo').text( resume.education.UVU.degree +" / ");
+	$('#gradTwo').text( resume.education.UVU.when);
+	$('#schoolTwo').text( resume.education.UVU.where);
+	$('#descTwo').text( resume.education.UVU.description);
+	
+	//Activities
+	$('#act').text( resume.activities[0] +". "+ resume.activities[1] +" "+resume.activities[2] +" "+resume.activities[3]);
+}
+
+function Ready(){
+	displayFromJson();
+
+	$('#tSkills').click(toggleSkills);
+	$('#tExperience').click(toggleExperience);
+	$('#tEducation').click(toggleEducation);
+	$('#tActivities').click(toggleActivities);
+}
+
+
+function toggleSkills(){
+	$('#skills').toggle();
+}
+function toggleExperience(){
+	$('#experience').toggle();
+}
+function toggleEducation(){
+	$('#education').toggle();
+}
+function toggleActivities(){
+	$('#act').toggle();
+}
+</script>	
+</html>
