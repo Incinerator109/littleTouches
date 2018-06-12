@@ -1,0 +1,58 @@
+
+body {
+	font-size: 12pt;
+	font-family: Calibri(Body);
+}
+
+h1 {
+	position: relative;
+	top: 5px;
+	font-size: 28pt;
+	font-family: "Times New Roman";
+}
+
+li {
+	color: rgb(62,146,229);
+}
+
+h2 {
+	font-size: 18pt;
+	font-family: "Times New Roman";
+	cursor: pointer;
+}
+
+h3 {
+	font-size: 16pt;
+	font-family: "Times New Roman";
+}
+
+h3 span {
+	color: rgb(62,146,229);
+}
+
+h3 span + span{
+	color: black;
+}
+
+#contact {
+	position: relative;
+	float: right;
+	left: -50px;
+}
+
+#stepdown {
+	position: relative;
+	top: -4px;
+}
+
+.highlight {
+	color: rgb(62,146,229);
+}
+
+.undo {
+	color: black;
+}
+
+.time {
+	font-size: 10pt;
+}
